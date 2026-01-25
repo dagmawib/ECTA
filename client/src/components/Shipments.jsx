@@ -93,28 +93,29 @@ export default function Shipments() {
 
       {/* Shipments Table */}
       <div className="bg-white rounded-lg shadow overflow-hidden">
-        <table className="min-w-full divide-y divide-gray-200">
+        <div className="overflow-x-auto">
+          <table className="min-w-full divide-y divide-gray-200 text-sm">
           <thead className="bg-gray-50">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
                 Shipment
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
                 Customer
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
                 Route
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
                 Mode
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
                 ETA
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
                 Status
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
                 Actions
               </th>
             </tr>
@@ -122,17 +123,17 @@ export default function Shipments() {
           <tbody className="bg-white divide-y divide-gray-200">
             {filteredShipments.map((shipment) => (
               <tr key={shipment.id} className="hover:bg-gray-50">
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="px-4 sm:px-6 py-3 whitespace-nowrap">
                   <div className="font-medium text-gray-900">{shipment.shipmentNumber}</div>
                   {shipment.containerNumber && (
                     <div className="text-sm text-gray-500">{shipment.containerNumber}</div>
                   )}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="px-4 sm:px-6 py-3 whitespace-nowrap">
                   <div className="text-gray-900">{shipment.customer?.name}</div>
                   <div className="text-sm text-gray-500">{shipment.customer?.country}</div>
                 </td>
-                <td className="px-6 py-4">
+                <td className="px-4 sm:px-6 py-3">
                   <div className="flex items-center text-sm">
                     <MapPin className="h-4 w-4 text-gray-400 mr-1" />
                     <span className="text-gray-900">{shipment.origin}</span>
@@ -142,16 +143,16 @@ export default function Shipments() {
                     <span>{shipment.destination}</span>
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="px-4 sm:px-6 py-3 whitespace-nowrap">
                   <ShipmentModeBadge mode={shipment.mode} />
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                <td className="px-4 sm:px-6 py-3 whitespace-nowrap text-sm text-gray-600">
                   {new Date(shipment.estimatedArrivalDate).toLocaleDateString()}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="px-4 sm:px-6 py-3 whitespace-nowrap">
                   <ShipmentStatusBadge status={shipment.status} />
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm">
+                <td className="px-4 sm:px-6 py-3 whitespace-nowrap text-sm">
                   <button
                     onClick={() => setSelectedShipment(shipment)}
                     className="text-blue-600 hover:text-blue-800 font-medium"
@@ -162,7 +163,8 @@ export default function Shipments() {
               </tr>
             ))}
           </tbody>
-        </table>
+          </table>
+        </div>
       </div>
 
       {/* Shipment Details Modal */}

@@ -141,35 +141,35 @@ export default function Finance() {
 
       {/* Profitability Table */}
       <div className="bg-white rounded-lg shadow overflow-hidden">
-        <div className="p-6 border-b border-gray-200">
+        <div className="p-4 sm:p-6 border-b border-gray-200">
           <h3 className="font-semibold text-gray-900">Shipment Profitability Analysis</h3>
         </div>
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
+          <table className="min-w-full divide-y divide-gray-200 text-sm">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
                   Shipment
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
                   Customer
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 sm:px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
                   Revenue
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 sm:px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
                   Est. Cost
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 sm:px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
                   Actual Cost
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 sm:px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
                   Variance
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 sm:px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
                   Profit
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 sm:px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
                   Margin
                 </th>
               </tr>
@@ -181,32 +181,32 @@ export default function Finance() {
                   className="hover:bg-gray-50 cursor-pointer"
                   onClick={() => setSelectedShipmentId(data.shipment.id)}
                 >
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-4 sm:px-6 py-3 whitespace-nowrap">
                     <div className="font-medium text-gray-900">{data.shipment.shipmentNumber}</div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-4 sm:px-6 py-3 whitespace-nowrap">
                     <div className="text-gray-900">{data.shipment.customer?.name}</div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-right font-semibold text-gray-900">
+                  <td className="px-4 sm:px-6 py-3 whitespace-nowrap text-right font-semibold text-gray-900">
                     ${data.revenue.toLocaleString()}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-right text-gray-600">
+                  <td className="px-4 sm:px-6 py-3 whitespace-nowrap text-right text-gray-600">
                     ${data.estimatedCost.toLocaleString()}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-right text-gray-900">
+                  <td className="px-4 sm:px-6 py-3 whitespace-nowrap text-right text-gray-900">
                     ${data.actualCost.toLocaleString()}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-right">
+                  <td className="px-4 sm:px-6 py-3 whitespace-nowrap text-right">
                     <span className={`font-medium ${
                       data.variance > 0 ? 'text-red-600' : data.variance < 0 ? 'text-green-600' : 'text-gray-600'
                     }`}>
                       {data.variance > 0 ? '+' : ''}{data.variance.toLocaleString()}
                     </span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-right font-semibold text-green-600">
+                  <td className="px-4 sm:px-6 py-3 whitespace-nowrap text-right font-semibold text-green-600">
                     ${data.profit.toLocaleString()}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-right">
+                  <td className="px-4 sm:px-6 py-3 whitespace-nowrap text-right">
                     <span className={`font-medium ${
                       data.margin >= 15 ? 'text-green-600' :
                       data.margin >= 10 ? 'text-blue-600' :
