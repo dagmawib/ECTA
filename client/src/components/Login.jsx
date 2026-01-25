@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { mockUsers } from '../data/mockData';
 import { Package, LogIn } from 'lucide-react';
+import { ImageWithFallback } from './figma/ImageWithFallback';
 
 export default function Login({ onLogin }) {
   const [selectedRole, setSelectedRole] = useState('');
@@ -50,18 +51,21 @@ export default function Login({ onLogin }) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-white to-[#211832] flex items-center justify-center p-4">
       <div className="max-w-[1400px] w-full">
         {/* Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
-            <Package className="h-16 w-16 text-blue-600" />
+            <ImageWithFallback
+              src="/images/ECTA-rem.png"
+            />
+
           </div>
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">ECTA Mini-ERP</h1>
-          <p className="text-lg text-gray-600">
+          <h1 className="text-4xl font-bold bg-gradient-to-br from-blue-500 to-gray-600 bg-clip-text text-transparent mb-2">Earth Core Trade Accelerater ERP</h1>
+          <p className="text-lg text-gray-50">
             Connecting Sales, Logistics, and Finance
           </p>
-          <p className="text-sm text-gray-500 mt-2">
+          <p className="text-sm text-gray-50 mt-2">
             Demo System - Select your role to continue
           </p>
         </div>

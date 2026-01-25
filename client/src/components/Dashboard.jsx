@@ -76,18 +76,18 @@ export default function Dashboard({ currentUser, onNavigate }) {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white rounded-lg shadow p-4 sm:p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Quotes</h3>
           <div className="space-y-3">
             {mockQuotes.slice(0, 5).map(quote => (
-              <div key={quote.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+              <div key={quote.id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 bg-gray-50 rounded-lg">
                 <div>
                   <div className="font-medium text-gray-900">{quote.quoteNumber}</div>
                   <div className="text-sm text-gray-500">
                     {mockCustomers.find(c => c.id === quote.customerId)?.name}
                   </div>
                 </div>
-                <div className="text-right">
+                <div className="text-right sm:text-right mt-2 sm:mt-0">
                   <div className="font-semibold text-gray-900">
                     ${quote.sellingPrice.toLocaleString()}
                   </div>
@@ -104,7 +104,7 @@ export default function Dashboard({ currentUser, onNavigate }) {
           </button>
         </div>
 
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white rounded-lg shadow p-4 sm:p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Pipeline Value</h3>
           <div className="space-y-4">
             <div className="flex justify-between items-center">
@@ -173,21 +173,21 @@ export default function Dashboard({ currentUser, onNavigate }) {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white rounded-lg shadow p-4 sm:p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Active Shipments</h3>
           <div className="space-y-3">
             {shipments
               .filter(s => ['in_transit', 'at_port', 'customs_clearance', 'delayed'].includes(s.status))
               .slice(0, 5)
               .map(shipment => (
-                <div key={shipment.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                <div key={shipment.id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 bg-gray-50 rounded-lg">
                   <div className="flex-1">
                     <div className="font-medium text-gray-900">{shipment.shipmentNumber}</div>
                     <div className="text-sm text-gray-500">
                       {shipment.origin} → {shipment.destination}
                     </div>
                   </div>
-                  <div className="text-right ml-4">
+                  <div className="text-right sm:text-right sm:ml-4 mt-2 sm:mt-0">
                     <div className="text-sm text-gray-600 mb-1">
                       ETA: {new Date(shipment.estimatedArrivalDate).toLocaleDateString()}
                     </div>
@@ -204,7 +204,7 @@ export default function Dashboard({ currentUser, onNavigate }) {
           </button>
         </div>
 
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white rounded-lg shadow p-4 sm:p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Shipment by Mode</h3>
           <div className="space-y-4">
             {['sea', 'air', 'land'].map(mode => {
@@ -267,7 +267,7 @@ export default function Dashboard({ currentUser, onNavigate }) {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white rounded-lg shadow p-4 sm:p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Shipment Profitability</h3>
           <div className="space-y-3">
             {shipments.slice(0, 5).map(shipment => {
@@ -277,14 +277,14 @@ export default function Dashboard({ currentUser, onNavigate }) {
               const margin = revenue > 0 ? (profit / revenue * 100) : 0;
               
               return (
-                <div key={shipment.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                <div key={shipment.id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 bg-gray-50 rounded-lg">
                   <div>
                     <div className="font-medium text-gray-900">{shipment.shipmentNumber}</div>
                     <div className="text-sm text-gray-500">
                       {shipment.customer?.name}
                     </div>
                   </div>
-                  <div className="text-right">
+                  <div className="text-right sm:text-right mt-2 sm:mt-0">
                     <div className="font-semibold text-gray-900">
                       ${profit.toLocaleString()}
                     </div>
@@ -304,7 +304,7 @@ export default function Dashboard({ currentUser, onNavigate }) {
           </button>
         </div>
 
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white rounded-lg shadow p-4 sm:p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Cost Variance Analysis</h3>
           <div className="space-y-4">
             {shipments
@@ -318,13 +318,13 @@ export default function Dashboard({ currentUser, onNavigate }) {
                 
                 return (
                   <div key={shipment.id} className="border-b pb-3 last:border-b-0">
-                    <div className="flex justify-between items-start mb-2">
+                    <div className="flex flex-col sm:flex-row sm:justify-between items-start gap-1 mb-2">
                       <div className="font-medium text-gray-900">{shipment.shipmentNumber}</div>
                       <div className={`text-sm font-semibold ${variance > 0 ? 'text-red-600' : 'text-green-600'}`}>
                         {variance > 0 ? '+' : ''}{variancePercent.toFixed(1)}%
                       </div>
                     </div>
-                    <div className="flex justify-between text-sm">
+                    <div className="flex flex-col sm:flex-row sm:justify-between text-sm gap-1">
                       <span className="text-gray-600">Estimated: ${estimated.toLocaleString()}</span>
                       <span className="text-gray-600">Actual: ${actual.toLocaleString()}</span>
                     </div>
@@ -373,7 +373,7 @@ export default function Dashboard({ currentUser, onNavigate }) {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white rounded-lg shadow p-4 sm:p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Top 5 Customers (by Revenue)</h3>
           <div className="space-y-3">
             {mockCustomers.slice(0, 5).map((customer, index) => {
@@ -381,7 +381,7 @@ export default function Dashboard({ currentUser, onNavigate }) {
               const revenue = customerShipments.reduce((sum, s) => sum + (s.salesOrder?.totalValue || 0), 0);
               
               return (
-                <div key={customer.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                <div key={customer.id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 bg-gray-50 rounded-lg">
                   <div className="flex items-center">
                     <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold mr-3">
                       {index + 1}
@@ -391,7 +391,7 @@ export default function Dashboard({ currentUser, onNavigate }) {
                       <div className="text-sm text-gray-500">{customer.country}</div>
                     </div>
                   </div>
-                  <div className="text-right">
+                  <div className="text-right sm:text-right mt-2 sm:mt-0">
                     <div className="font-semibold text-gray-900">${revenue.toLocaleString()}</div>
                     <div className="text-sm text-gray-500">{customerShipments.length} shipments</div>
                   </div>
@@ -401,7 +401,7 @@ export default function Dashboard({ currentUser, onNavigate }) {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white rounded-lg shadow p-4 sm:p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Key Metrics Overview</h3>
           <div className="space-y-4">
             <MetricRow 
@@ -438,7 +438,7 @@ export default function Dashboard({ currentUser, onNavigate }) {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-3xl font-semibold text-gray-900">Dashboard</h1>
+        <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900">Dashboard</h1>
         <p className="text-gray-600 mt-1">
           Welcome back, {currentUser.name} • {new Date().toLocaleDateString('en-US', { 
             weekday: 'long', 
@@ -459,8 +459,8 @@ export default function Dashboard({ currentUser, onNavigate }) {
 
 function KPICard({ title, value, total, icon, trend, change, bgColor }) {
   return (
-    <div className="bg-white rounded-lg shadow p-6">
-      <div className="flex items-center justify-between mb-4">
+    <div className="bg-white rounded-lg shadow p-4 sm:p-6">
+      <div className="flex items-start sm:items-center justify-between mb-4">
         <div className={`${bgColor} rounded-lg p-3 text-white`}>
           {icon}
         </div>
@@ -531,7 +531,7 @@ function ShipmentStatusBadge({ status }) {
 
 function MetricRow({ label, value, trend }) {
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1">
       <span className="text-gray-600">{label}</span>
       <div className="flex items-center">
         <span className="font-semibold text-gray-900 mr-2">{value}</span>

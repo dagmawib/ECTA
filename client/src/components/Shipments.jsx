@@ -451,8 +451,8 @@ function ShipmentDetailsModal({
               <div>
                 <h3 className="font-semibold text-gray-900 mb-3">Cost Breakdown</h3>
                 <div className="grid grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="text-sm font-medium text-gray-700 mb-3">Estimated Costs</h4>
+                  <div className='border border-1 border-gray-300 p-3'>
+                    <h4 className="text-sm font-medium text-gray-700 text-center mb-3">Estimated Costs</h4>
                     <div className="space-y-2 text-sm">
                       <CostRow label="Freight" amount={shipment.estimatedCosts.freight} />
                       <CostRow label="Duty" amount={shipment.estimatedCosts.duty} />
@@ -467,8 +467,8 @@ function ShipmentDetailsModal({
                   </div>
 
                   {shipment.actualCosts && (
-                    <div>
-                      <h4 className="text-sm font-medium text-gray-700 mb-3">Actual Costs</h4>
+                    <div className='border border-1 border-gray-300 p-3'>
+                      <h4 className="text-sm font-medium text-gray-700 text-center mb-3">Actual Costs</h4>
                       <div className="space-y-2 text-sm">
                         <CostRow label="Freight" amount={shipment.actualCosts.freight} variance={shipment.actualCosts.freight - shipment.estimatedCosts.freight} />
                         <CostRow label="Duty" amount={shipment.actualCosts.duty} variance={shipment.actualCosts.duty - shipment.estimatedCosts.duty} />
